@@ -1,4 +1,4 @@
-const API_URL = 'https://api.open-meteo.com/v1/forecast';
+const API_URL = "https://api.open-meteo.com/v1/forecast";
 
 async function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -54,17 +54,14 @@ function parseResponse(data) {
  */
 export async function weatherSearch(lat, lng) {
   await sleep(1000);
-  // Querystring sem við viljum senda með leit
-  // latitude={lat}&longitude={lng}}&hourly=temperature_2m,precipitation&timezone=GMT&forecast_days=1
 
-  // TODO útfæra
-  // Hér ætti að nota URL og URLSearchParams
   const url = new URL(API_URL);
   const querystring = new URLSearchParams({
     latitude: lat.toString(),
     longitude: lng.toString(),
-    hourly: 'temperature_2m,precipitation',
-    forecast_days: '1',
+    hourly: "temperature_2m,precipitation",
+    timezone: "GMT",
+    forecast_days: "1",
   });
   url.search = querystring.toString();
 
@@ -72,9 +69,7 @@ export async function weatherSearch(lat, lng) {
 
   if (response.ok) {
     const data = await response.json();
-
     return parseResponse(data);
   }
-
   return [];
 }
