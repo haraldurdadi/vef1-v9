@@ -1,8 +1,3 @@
-/**
- * Gefið efni fyrir verkefni 9, ekki er krafa að nota nákvæmlega þetta en nota
- * verður gefnar staðsetningar.
- */
-
 import { el, empty } from "./lib/elements.js";
 import { weatherSearch } from "./lib/weather.js";
 
@@ -171,7 +166,6 @@ async function onSearch(location) {
  * Biður notanda um leyfi gegnum vafra.
  */
 async function onSearchMyLocation() {
-  // TODO útfæra
   if (navigator.geolocation) {
     renderLoading();
 
@@ -219,15 +213,6 @@ function renderLocationButton(locationTitle, onSearch) {
     el("button", { class: "locations__button", click: onSearch }, locationTitle)
   );
 
-  /* Til smanburðar við el fallið ef við myndum nota DOM aðgerðir
-  const locationElement = document.createElement('li');
-  locationElement.classList.add('locations__location');
-  const locationButton = document.createElement('button');
-  locationButton.appendChild(document.createTextNode(locationTitle));
-  locationButton.addEventListener('click', onSearch);
-  locationElement.appendChild(locationButton);
-  */
-
   return locationElement;
 }
 
@@ -250,7 +235,6 @@ function render(container, locations, onSearch, onSearchMyLocation) {
   headerElement.appendChild(heading);
   parentElement.appendChild(headerElement);
 
-  // TODO útfæra inngangstexta
   const introElement = document.createElement("body");
   const intro = document.createElement("p");
   intro.appendChild(
